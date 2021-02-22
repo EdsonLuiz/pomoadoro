@@ -1,5 +1,5 @@
 # pomo[A]doro
-Projeto realizado durante a NL#04
+Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](https://pomoadoro.vercel.app/)
 
 ## O que foi utilizado?
 - create-next-app
