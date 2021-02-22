@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -6,6 +8,15 @@ module.exports = {
     fontFamily: {
       inter: ['Inter', 'sans-serif'],
       rajdhani: ['Rajdhani', 'sans-serif'],
+    },
+    colors: {
+      ...defaultTheme.colors,
+      lime: colors.lime,
+      warmGray: colors.warmGray,
+      blueGray: colors.blueGray,
+      rose: colors.rose,
+      lightBlue: colors.lightBlue,
+
     },
   },
   variants: {

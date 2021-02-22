@@ -1,5 +1,7 @@
 // import Head from 'next/head'
 
+import { ExperienceBar } from "../components/ExperienceBar";
+
 
 export default function Home() {
   return (
@@ -7,9 +9,8 @@ export default function Home() {
       //   <title>Create Next App</title>
       //   <link rel="icon" href="/favicon.ico" />
       // </Head> */}
-      <div>
-        <h1 className="font-normal font-inter" >hello world</h1>
-        <h1 className="font-semibold font-rajdhani" >hello world</h1>
+      <div className="container flex flex-col h-screen px-8 py-10 mx-auto">
+        <ExperienceBar />
       </div>
 
   )
