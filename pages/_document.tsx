@@ -17,28 +17,8 @@ import Document, {
       return (
         <Html>
           <Head>
-            <link
-              rel="preconnect"
-              href="https://fonts.gstatic.com"
-              crossOrigin="true"
-            />
-            <link
-              rel="preload"
-              as="style"
-              href="https://fonts.googleapis.com/css2?family=Inter&family=Rajdhani:wght@600&display=swap"
-            />
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Inter&family=Rajdhani:wght@600&display=swap"
-              media="print"
-              onLoad="this.media='all'"
-            />
-            <noscript>
-              <link
-                rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Inter&family=Rajdhani:wght@600&display=swap"
-              />
-            </noscript>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Inter&family=Rajdhani:wght@600&display=swap" rel="stylesheet" />
           </Head>
           <body>
             <Main />

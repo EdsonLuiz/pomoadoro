@@ -8,7 +8,8 @@ export default function Home() {
       //   <link rel="icon" href="/favicon.ico" />
       // </Head> */}
       <div>
-        <h1>hello world</h1>
+        <h1 className="font-normal font-inter" >hello world</h1>
+        <h1 className="font-semibold font-rajdhani" >hello world</h1>
       </div>
 
   )
