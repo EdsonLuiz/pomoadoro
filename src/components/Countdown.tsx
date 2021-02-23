@@ -1,6 +1,6 @@
 export function Countdown() {
   return(
-    <div className="flex items-center font-semibold font-rajdhani text-blueGray-700">
+    <CountdownContainer>
 
       <Display>
         <Text>2</Text>
@@ -14,9 +14,15 @@ export function Countdown() {
         <Text>0</Text>
       </Display>
       
-    </div>
+    </CountdownContainer>
   )
 }
+
+const CountdownContainer = ({children}) => (
+  <div className="flex items-center font-semibold font-rajdhani text-blueGray-700">
+    {children}
+  </div>
+)
 
 const Display = ({children}) => (
   <div className="flex items-center flex-1 text-center bg-white rounded-md shadow-xl justify-evenly text-9xl">{children}</div>
