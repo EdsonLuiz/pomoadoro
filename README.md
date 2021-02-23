@@ -1,4 +1,6 @@
-# pomo[A]doro
+![PomoadoroBannerWhite](https://user-images.githubusercontent.com/5461553/108886595-e84a2300-75e7-11eb-814d-e1f3eb085587.png)
+
+## Sobre
 Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](https://pomoadoro.vercel.app/)
 
 ## O que foi utilizado?
