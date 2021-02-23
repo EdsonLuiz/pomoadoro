@@ -10,6 +10,11 @@ Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](ht
   - Inter Normal-400
   - Rajdhani Semi-bold 600
 
+## Pontos para melhorar
+- [ ] Melhorar a responsividade
+- [ ] De complexidade para componente
+  - [ ] Classes Tailwind duplicadas devem virar componentes
+
 ## Cores do projeto convertidas para Tailwind colors
 - background:       gray-100
 - gray-line:        gray-200
@@ -21,6 +26,16 @@ Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](ht
 - blue:             indigo-500
 - blue-dark:        indigo-700
 - blue-twitter:     lightBlue-500
+
+## Ajuda extra
+- Foi necessário ativar as variantes ```first:``` e ```last:``` para as bordas. Isto deve ser feito no arquivo ***tailwind.config.js***.
+  ```javascript
+    variants: {
+    extend: {
+      borderColor: ['first', 'last'],
+      borderWidth: ['first', 'last'],
+    },
+  ```
 
 ## Fontes externas de ajuda
 - Traduzir uma cor em hexadecimal para um valor aproximado na paleta de cores do Tailwind: [link](https://find-nearest-tailwind-colour.netlify.app/)
