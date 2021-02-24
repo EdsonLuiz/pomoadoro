@@ -1,3 +1,6 @@
+import { useContext } from "react"
+import { ChallengeContext } from "../contexts/ChallengesContext"
+import { Challenge } from "./interfaces/Challenge"
 
 interface ChanllengeBoxContainerProps {
   children: React.ReactNode,
@@ -9,15 +12,20 @@ interface ButtonProps {
   buttonText: String
 }
 
-export function ChallengeBox() {
+interface CycleProps {
+  activeChallenge: Challenge
+}
 
-  const hasActiveChallenge = true
+export function ChallengeBox() {
+  const {activeChallenge, resetChallenge} = useContext(ChallengeContext)
+
+  const hasActiveChallenge = activeChallenge !== null
 
   return (
     <ChanllengeBoxContainer hasActiveChallenge={hasActiveChallenge} >
       {hasActiveChallenge
-        ? <CycleDown />
-        : <CycleUp />
+        ? <CycleDown activeChallenge={activeChallenge} />
+        : <CycleUp activeChallenge={activeChallenge} />
       }
       
 
@@ -37,7 +45,7 @@ function ChanllengeBoxContainer({children, hasActiveChallenge}: ChanllengeBoxCon
   </div>
 )}
 
-const CycleUp = () => (
+const CycleUp = ({activeChallenge}: CycleProps) => (
   <div className="text-center">
     <strong>
       Finalize um ciclo para receber um desafio.
@@ -49,20 +57,20 @@ const CycleUp = () => (
   </div>
 )
 
-const CycleDown = () => (
+const CycleDown = ({activeChallenge}: CycleProps) => (
   <div 
     className="flex flex-col items-center h-full"
   >
     <header className="w-full px-8 pb-6 text-xl font-semibold text-center text-indigo-500 border-b border-gray-200 dark:text-blue-400">
-      Ganhe 400 xp
+      Ganhe {activeChallenge.amount} xp
     </header>
     <main className="flex flex-col items-center justify-center flex-1">
-      <img src="icons/body.svg" alt="A mão de uma pessoa segurando um equipamento de levantamento de peso"/>
+      <img src={`icons/${activeChallenge.type}.svg`} alt="A mão de uma pessoa segurando um equipamento de levantamento de peso"/>
       <strong className="mb-4 text-3xl font-semibold dark:text-white text-blueGray-700 mt-7">
         Exercite-se
       </strong>
       <p className="text-base leading-relaxed dark:text-gray-100">
-        Caminhe por 3 minutos e estique suas pernas pra você ficar saudável.
+        {activeChallenge.description}
       </p>
     </main>
     <footer className="grid w-full grid-cols-2 gap-4">
@@ -85,10 +93,11 @@ const Content = ({children}) => (
 )
 
 function Button({buttonText, failed = false}: ButtonProps) {
+  const {resetChallenge} = useContext(ChallengeContext)
   return (
     <button
       className={`flex items-center justify-center h-12 text-base font-semibold text-white rounded-md transition-colors duration-200 ${failed ? 'bg-rose-500 hover:bg-rose-600' : 'bg-lime-500 hover:bg-lime-600'} `}
-      onClick={()=>{}}
+      onClick={resetChallenge}
       type="button"
     >
       {buttonText}
