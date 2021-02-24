@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Button } from "./Button";
+import { Actions } from "./interfaces/Actions";
+
+let countdownTimeOut: NodeJS.Timeout;
 
 
 export function Countdown() {
 
   const [time, setTime] = useState(25 * 60)
   const [isActive, setIsActive] = useState(false)
+  const [hasFinished, setHasFinished] = useState(false )
 
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
@@ -16,11 +21,24 @@ export function Countdown() {
     setIsActive(true)
   }
 
+  function resertCountdown() {
+    clearTimeout(countdownTimeOut)
+    setIsActive(false)
+    setTime(0.1 * 60)
+  }
+
+  function countdownActions(): Actions {
+    return {execute: {startCountdown, resertCountdown}}
+  }
+
   useEffect(() => {
     if(isActive && time > 0) {
-      setTimeout(() => {
+      countdownTimeOut = setTimeout(() => {
         setTime(time - 1)
       }, 1000);
+    } else if (isActive && time === 0) {
+      setHasFinished(true)
+      setIsActive(false)
     }
   }, [isActive, time])
 
@@ -40,9 +58,9 @@ export function Countdown() {
         </Display>
       </CountdownContainer>
 
-      <Button execute={startCountdown}>
-        Iniciar um ciclo
-      </Button>
+
+      <Button hasFinished={hasFinished} isActive={isActive} actions={countdownActions()} />
+      
     </>
   );
 }
@@ -63,10 +81,3 @@ const Text = ({children}) => (
   </span>
 )
 
-const Button = ({ children, execute }) => (
-  <button 
-    onClick={execute}
-    className="flex items-center justify-center flex-1 w-full h-16 mt-6 text-lg font-semibold text-white transition-colors duration-300 bg-indigo-500 rounded sm:h-20 sm:mt-8 sm:text-xl font-inter hover:bg-indigo-700">
-    {children}
-  </button>
-);
