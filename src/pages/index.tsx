@@ -1,6 +1,7 @@
 // import Head from 'next/head'
 
 import Head  from "next/head";
+import { ChallengeBox } from "../components/ChallengeBox";
 import { CompletedChallenges } from "../components/CompletedChallenges";
 import { Container } from "../components/Container";
 import { Countdown } from "../components/Countdown";
@@ -27,7 +28,9 @@ export default function Home() {
             <Countdown />
           </div>
 
-          <div className="hidden sm:col-span-1"></div>
+          <div className="invisible sm:visible sm:col-span-1">
+            <ChallengeBox />
+          </div>
         </section>
       </Container>
     </>
