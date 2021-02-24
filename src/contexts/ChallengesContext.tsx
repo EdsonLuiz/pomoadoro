@@ -1,16 +1,13 @@
 import {createContext, ReactNode, useState} from 'react'
 
 import challenges from '../../challenges.json'
+import { Challenge } from '../components/interfaces/Challenge'
 
 interface ChallangeProviderProps {
   children: ReactNode
 }
 
-interface Challenge {
-    type: 'body' | 'eye' ;
-    description: string;
-    amount: number;
-}
+
 
 interface ChallengesContextData {
   level: number, 
@@ -18,7 +15,9 @@ interface ChallengesContextData {
   currentExperience: number, 
   challengeCompleted: number, 
   startNewChallenge(): void,
-  activeChallenge: Challenge
+  activeChallenge: Challenge,
+  resetChallenge(): void,
+  experienceToNextLevel: number
 }
 
 export const ChallengeContext = createContext({} as ChallengesContextData)
@@ -28,6 +27,8 @@ export function ChallangeProvider({children}: ChallangeProviderProps) {
   const [currentExperience, setCurrentExperience] = useState(0)
   const [challengeCompleted, setChallengeCompleted] = useState(0)
   const [activeChallenge, setActiveChallenge] = useState(null)
+
+  const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
   function levelUp() {
     setLevel(level + 1)
@@ -39,6 +40,10 @@ export function ChallangeProvider({children}: ChallangeProviderProps) {
     setActiveChallenge(challenge)
   }
 
+  function resetChallenge() {
+    setActiveChallenge(null)
+  }
+
   return (
     <ChallengeContext.Provider 
       value={
@@ -48,7 +53,9 @@ export function ChallangeProvider({children}: ChallangeProviderProps) {
           currentExperience, 
           challengeCompleted, 
           startNewChallenge,
-          activeChallenge
+          activeChallenge,
+          resetChallenge,
+          experienceToNextLevel
         }}>
       {children}
     </ChallengeContext.Provider>
