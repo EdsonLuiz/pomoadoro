@@ -4,12 +4,15 @@ import { XpCounter } from "./XpCounter";
 
 export function ExperienceBar() {
   const {currentExperience, experienceToNextLevel} = useContext(ChallengeContext)
+
+  const percentToNextLevel = Math.round(currentExperience * 100) / experienceToNextLevel
+
   return (
     <header className="flex items-center col-span-full">
       <XpCounter>0 xp</XpCounter>
       <div className="relative flex-1 h-1 mx-6 bg-gray-200 rounded">
-        <div className="w-6/12 h-1 bg-lime-500">
-          <span className="absolute transform -translate-x-1/2 dark:text-gray-100 text-warmGray-500 font-inter top-3 left-1/2">{currentExperience} xp</span>
+        <div className="h-1 bg-lime-500" style={{width: `${percentToNextLevel}%`}} >
+          <span className="absolute transform -translate-x-1/2 dark:text-gray-100 text-warmGray-500 font-inter top-3 " style={{left: `${percentToNextLevel}%`}} >{currentExperience} xp</span>
         </div>
       </div>
       <XpCounter>{experienceToNextLevel} xp</XpCounter>
