@@ -32,7 +32,7 @@ export function Countdown() {
           <Text>{minutestRight}</Text>
         </Display>
 
-        <span className="mx-1 text-8xl">:</span>
+        <span className="mx-1 text-8xl dark:text-white">:</span>
 
         <Display>
           <Text>{secondsLeft}</Text>
@@ -54,11 +54,11 @@ const CountdownContainer = ({children}) => (
 )
 
 const Display = ({children}) => (
-  <div className="flex items-center flex-1 text-center bg-white rounded-md shadow-xl justify-evenly text-9xl">{children}</div>
+  <div className="flex items-center flex-1 text-center bg-white rounded-md shadow-xl dark:bg-trueGray-700 justify-evenly text-8xl sm:text-9xl">{children}</div>
 )
 
 const Text = ({children}) => (
-  <span className="flex-1 first:border-r-8 first:border-gray-100">
+  <span className="flex-1 first:border-r-8 dark:text-white first:border-gray-100 dark:first:border-trueGray-800">
     {children}
   </span>
 )
@@ -66,7 +66,7 @@ const Text = ({children}) => (
 const Button = ({ children, execute }) => (
   <button 
     onClick={execute}
-    className="flex items-center justify-center flex-1 w-full h-20 mt-8 text-xl font-semibold text-white transition-colors duration-300 bg-indigo-500 rounded font-inter hover:bg-indigo-700">
+    className="flex items-center justify-center flex-1 w-full h-16 mt-6 text-lg font-semibold text-white transition-colors duration-300 bg-indigo-500 rounded sm:h-20 sm:mt-8 sm:text-xl font-inter hover:bg-indigo-700">
     {children}
   </button>
 );
