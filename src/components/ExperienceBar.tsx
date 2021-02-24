@@ -3,7 +3,7 @@ import { ChallengeContext } from "../contexts/ChallengesContext";
 import { XpCounter } from "./XpCounter";
 
 export function ExperienceBar() {
-  const {currentExperience} = useContext(ChallengeContext)
+  const {currentExperience, experienceToNextLevel} = useContext(ChallengeContext)
   return (
     <header className="flex items-center col-span-full">
       <XpCounter>0 xp</XpCounter>
@@ -12,7 +12,7 @@ export function ExperienceBar() {
           <span className="absolute transform -translate-x-1/2 dark:text-gray-100 text-warmGray-500 font-inter top-3 left-1/2">{currentExperience} xp</span>
         </div>
       </div>
-      <XpCounter>600 xp</XpCounter>
+      <XpCounter>{experienceToNextLevel} xp</XpCounter>
     </header>
   )
 }
