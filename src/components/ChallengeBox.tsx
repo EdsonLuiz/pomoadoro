@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { ChallengeContext } from "../contexts/ChallengesContext"
+import { CountdownContext, CountdownProvider } from "../contexts/CountdownContext"
 import { Challenge } from "./interfaces/Challenge"
 
 interface ChanllengeBoxContainerProps {
@@ -17,7 +18,7 @@ interface CycleProps {
 }
 
 export function ChallengeBox() {
-  const {activeChallenge, resetChallenge} = useContext(ChallengeContext)
+  const {activeChallenge} = useContext(ChallengeContext)
 
   const hasActiveChallenge = activeChallenge !== null
 
@@ -94,10 +95,21 @@ const Content = ({children}) => (
 
 function Button({buttonText, failed = false}: ButtonProps) {
   const {resetChallenge, completeChallenge} = useContext(ChallengeContext)
+  const {resertCountdown} = useContext(CountdownContext)
+
+  function handleChallengeSucceded() {
+    completeChallenge()
+    resertCountdown()
+  }
+  function handleChallengeFailed() {
+    resetChallenge()
+    resertCountdown()
+  }
+
   return (
     <button
       className={`flex items-center justify-center h-12 text-base font-semibold text-white rounded-md transition-colors duration-200 ${failed ? 'bg-rose-500 hover:bg-rose-600' : 'bg-lime-500 hover:bg-lime-600'} `}
-      onClick={failed ? resetChallenge : completeChallenge}
+      onClick={failed ? handleChallengeFailed : handleChallengeSucceded}
       type="button"
     >
       {buttonText}

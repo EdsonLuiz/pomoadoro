@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider attribute="class">
       <ChallangeProvider>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
       </ChallangeProvider>
       
     </ThemeProvider>

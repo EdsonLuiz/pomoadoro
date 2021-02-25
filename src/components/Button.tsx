@@ -1,16 +1,15 @@
-import { Actions } from "./interfaces/Actions"
+import { useContext } from "react";
+import { CountdownContext } from "../contexts/CountdownContext";
 
-interface buttonProps {
-  isActive: boolean,
-  actions: Actions,
-  hasFinished: boolean
-}
 
-export function Button ({ isActive, actions, hasFinished }: buttonProps) {
+export function Button () {
+
+  const {resertCountdown, startCountdown, isActive, hasFinished} = useContext(CountdownContext);
+
   let cursor = hasFinished ? 'cursor-not-allowed' : ''
   const baseStyle = `${cursor} flex items-center justify-center flex-1 w-full h-16 mt-6 text-lg font-semibold text-white transition-colors duration-300 bg-indigo-500 rounded sm:h-20 sm:mt-8 sm:text-xl font-inter hover:bg-indigo-700`
 
-  const executeAction = isActive ? actions.execute.resertCountdown : actions.execute.startCountdown
+  const executeAction = isActive ? resertCountdown : startCountdown
   return (
   <button 
     onClick={() => executeAction()}
