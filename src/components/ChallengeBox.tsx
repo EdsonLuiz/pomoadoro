@@ -93,11 +93,11 @@ const Content = ({children}) => (
 )
 
 function Button({buttonText, failed = false}: ButtonProps) {
-  const {resetChallenge} = useContext(ChallengeContext)
+  const {resetChallenge, completeChallenge} = useContext(ChallengeContext)
   return (
     <button
       className={`flex items-center justify-center h-12 text-base font-semibold text-white rounded-md transition-colors duration-200 ${failed ? 'bg-rose-500 hover:bg-rose-600' : 'bg-lime-500 hover:bg-lime-600'} `}
-      onClick={resetChallenge}
+      onClick={failed ? resetChallenge : completeChallenge}
       type="button"
     >
       {buttonText}
