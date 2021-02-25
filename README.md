@@ -61,3 +61,4 @@ Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](ht
 - Traduzir uma cor em hexadecimal para um valor aproximado na paleta de cores do Tailwind: [link](https://find-nearest-tailwind-colour.netlify.app/)
 - Adicionar cores extras da curadoria de cores do Tailwind: [link](https://tailwindcss.com/docs/customizing-colors)
 - Adicionar fontes do google ao Tailwind: [link](https://dev.to/thomasledoux1/the-best-way-to-use-google-fonts-in-next-js-tailwind-43a2)
+- Dark mode de forma simples com tailwind [link](https://dev.to/thomasledoux1/easy-way-to-use-dark-mode-in-next-js-tailwind-2ob1)
