@@ -1,9 +1,13 @@
+import { useContext } from "react";
+import { ChallengeContext } from "../contexts/ChallengesContext";
 
 
 
 
 export function Profile() {
   
+  const {level} = useContext(ChallengeContext)
+
   return (
     <div className="flex items-center mt-12 sm:mt-0">
       <img
@@ -21,7 +25,7 @@ export function Profile() {
             src="icons/level.svg"
             alt="icone que precede informação de nível"
           />
-          Level 01
+          Level {level}
         </p>
       </div>
     </div>
