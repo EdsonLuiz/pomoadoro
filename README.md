@@ -38,6 +38,24 @@ Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](ht
       borderWidth: ['first', 'last'],
     },
   ```
+- Ganhar pontinhos de performance no google Lighthouse melhorando o carregamento de fontes. Voce deve adicionar este trecho de código em seu ```_document``` ou ```_app```.
+  ```html
+  <Html lang="pt-br">
+    <Head>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
+      <link rel="preload" as="style" href="https://linkDaSuaFonte"/>
+      <link rel="stylesheet" href="https://linkDaSuaFonte" media="print"
+        // @ts-ignore
+        onLoad="this.media='all'"/>
+      <noscript>
+        <link
+          rel="stylesheet"
+          href="https://linkDaSuaFonte"
+        />
+      </noscript>
+    </Head>
+  </Html>
+  ```
 
 ## Fontes externas de ajuda
 - Traduzir uma cor em hexadecimal para um valor aproximado na paleta de cores do Tailwind: [link](https://find-nearest-tailwind-colour.netlify.app/)
