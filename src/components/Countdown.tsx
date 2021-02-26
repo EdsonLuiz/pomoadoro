@@ -1,8 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ChallengeContext } from "../contexts/ChallengesContext";
+import React, { useContext } from "react";
 import { CountdownContext } from "../contexts/CountdownContext";
-import { Button } from "./Button";
-import { Actions } from "./interfaces/Actions";
 
 
 export function Countdown() {
@@ -10,8 +7,6 @@ export function Countdown() {
   const {
     minutes,
     seconds,
-    hasFinished,
-    isActive,
   } = useContext(CountdownContext);
 
 
@@ -36,7 +31,6 @@ export function Countdown() {
       </CountdownContainer>
 
 
-      <Button />
       
     </>
   );
@@ -49,7 +43,7 @@ const CountdownContainer = ({children}) => (
 )
 
 const Display = ({children}) => (
-  <div className="flex items-center flex-1 text-center bg-white rounded-md shadow-xl dark:bg-trueGray-700 justify-evenly text-8xl sm:text-9xl">{children}</div>
+  <div className="flex items-center justify-center flex-1 text-center bg-white rounded-md shadow-xl dark:bg-trueGray-700 text-8xl sm:text-8xl">{children}</div>
 )
 
 const Text = ({children}) => (
