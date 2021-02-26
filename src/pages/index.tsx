@@ -12,6 +12,8 @@ import { ModeSwitch } from "../components/ModeSwitch";
 import { Profile } from "../components/Profile";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallangeProvider } from "../contexts/ChallengesContext";
+import React from "react";
+import { Button } from "../components/Button";
 
 interface HomeProps {
   level: number,
@@ -34,14 +36,15 @@ export default function Home(props: HomeProps) {
           <ExperienceBar />
 
           <CountdownProvider>
-            <section className="grid flex-1 grid-cols-1 gap-24 sm:grid-cols-2 col-span-full">
-              <div className="col-span-full sm:col-span-1">
+            <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 col-span-full">
+              <div className="flex flex-col justify-between col-span-full md:col-span-1">
                 <Profile />
                 <CompletedChallenges />
                 <Countdown />
+                <Button />
               </div>
 
-              <div className="invisible sm:visible sm:col-span-1">
+              <div className="hidden md:block sm:col-span-1">
                 <ChallengeBox />
               </div>
             </section>
@@ -57,9 +60,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: { 
-      level: Number(level), 
-      currentExperience: Number(currentExperience), 
-      challengeCompleted: Number(challengeCompleted) 
+      level: Number(level ?? 1), 
+      currentExperience: Number(currentExperience ?? 0), 
+      challengeCompleted: Number(challengeCompleted ?? 0) 
     },
   };
 };
