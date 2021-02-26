@@ -6,6 +6,9 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
+      gridTemplateColumns: {
+        'nlw': '112px minmax(0, 1fr)'
+      },
       backgroundImage: theme => ({
         'levelup': "url('/icons/levelup.svg')",
        })
