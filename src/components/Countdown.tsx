@@ -29,9 +29,6 @@ export function Countdown() {
           <Text>{secondstRight}</Text>
         </Display>
       </CountdownContainer>
-
-
-      
     </>
   );
 }
@@ -43,7 +40,7 @@ const CountdownContainer = ({children}) => (
 )
 
 const Display = ({children}) => (
-  <div className="flex items-center justify-center flex-1 text-center bg-white rounded-md shadow-xl dark:bg-trueGray-700 text-8xl sm:text-8xl">{children}</div>
+  <div className="flex items-center flex-1 text-center bg-white rounded-md shadow-xl justify-evenly dark:bg-trueGray-700 text-8xl sm:text-8xl">{children}</div>
 )
 
 const Text = ({children}) => (
