@@ -5,6 +5,10 @@ Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](ht
 
 ## O que foi utilizado?
 - create-next-app
+- Next (sério? 🤪)
+  - Hooks
+  - Context API
+  - getStaticProps
 - typescript
 - tailwind
   - Curated colors
@@ -13,9 +17,9 @@ Projeto realizado durante a NL#04. Pode ser visto em produção neste [link.](ht
   - Rajdhani Semi-bold 600
 
 ## Pontos para melhorar
-- [ ] Melhorar a responsividade
-- [ ] De complexidade para componente
-  - [ ] Classes Tailwind duplicadas devem virar componentes
+- [X] Melhorar a responsividade
+- [X] De complexidade para componente
+  - [X] Classes Tailwind duplicadas devem virar componentes
 
 ## Cores do projeto convertidas para Tailwind colors
 - background:       gray-100
