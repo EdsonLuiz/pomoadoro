@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        'nlw': '112px minmax(0, 1fr)'
+        'nlw': '112px minmax(0, 1fr)',
+        'profile': '80px minmax(77px, 1fr) 48px',
       },
       backgroundImage: theme => ({
         'levelup': "url('/icons/levelup.svg')",
