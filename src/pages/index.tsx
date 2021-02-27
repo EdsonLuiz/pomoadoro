@@ -8,11 +8,10 @@ import { CompletedChallenges } from "../components/CompletedChallenges";
 import { Container } from "../components/Container";
 import { Countdown } from "../components/Countdown";
 import { ExperienceBar } from "../components/ExperienceBar";
-import { ModeSwitch } from "../components/ModeSwitch";
 import { Profile } from "../components/Profile";
-import { CountdownProvider } from "../contexts/CountdownContext";
+import { CountdownContext, CountdownProvider } from "../contexts/CountdownContext";
 import { ChallangeProvider } from "../contexts/ChallengesContext";
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "../components/Button";
 import { MenuBar } from "../components/MenuBar";
 
@@ -45,16 +44,17 @@ export default function Home(props: HomeProps) {
 
               <CountdownProvider>
                 <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 col-span-full">
-                  <div className="flex flex-col justify-between col-span-full md:col-span-1">
+                  <ContentContainer>
                     <Profile />
                     <CompletedChallenges />
                     <Countdown />
                     <Button />
-                  </div>
+                  </ContentContainer>
 
-                  <div className="hidden md:block sm:col-span-1">
+                  <ChallengeBoxContainer>
                     <ChallengeBox />
-                  </div>
+                  </ChallengeBoxContainer>
+
                 </section>
               </CountdownProvider>
             </Container>
@@ -64,6 +64,26 @@ export default function Home(props: HomeProps) {
       </ChallangeProvider>
     </>
   );
+}
+
+function ChallengeBoxContainer({children}) {
+  const {hasFinished} = useContext(CountdownContext)
+
+  return (
+    <div className={` ${hasFinished ? 'block' : 'hidden' }  md:block md:col-span-1`}>
+      {children}
+    </div>
+  )
+}
+
+function ContentContainer({children}) {
+  const {hasFinished} = useContext(CountdownContext)
+
+  return (
+    <div className={` ${hasFinished ? 'hidden' : 'flex' } md:flex flex-col justify-between col-span-full md:col-span-1`}>
+      {children}
+    </div>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
